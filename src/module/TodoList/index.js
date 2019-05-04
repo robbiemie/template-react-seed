@@ -9,6 +9,12 @@ class TodoList extends Component {
       target: '',
       list: []
     }
+    this.bindMethods()
+  }
+  bindMethods(){
+    this.handleInput = this.handleInput.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
   render() { 
     return ( 
@@ -18,9 +24,9 @@ class TodoList extends Component {
           placeholder="please input words"
           className="search"
           value={this.state.target} // 绑定数据
-          onChange={this.handleInput.bind(this)} // 绑定方法
+          onChange={this.handleInput} // 绑定方法
         />
-        <button onClick={this.handleSubmit.bind(this)}>submit</button>
+        <button onClick={this.handleSubmit}>submit</button>
         <ul>
           {
             this.state.list.map((item,index)=>{
@@ -28,7 +34,7 @@ class TodoList extends Component {
               return (
                 <TodoItem key={index} 
                   infos={{...item,index}}
-                  delete={this.handleDelete.bind(this)}/>
+                  delete={this.handleDelete}/>
               )
             })
           }
