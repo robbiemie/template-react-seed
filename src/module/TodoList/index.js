@@ -28,34 +28,36 @@ class TodoList extends Component {
         />
         <button onClick={this.handleSubmit}>submit</button>
         <ul>
-          {
-            this.state.list.map((item,index)=>{
-              // 子组件传参
-              return (
-                <TodoItem key={index} 
-                  infos={{...item,index}}
-                  delete={this.handleDelete}/>
-              )
-            })
-          }
+          { this.getItem() }
         </ul>
       </Fragment>
      )
   }
+  getItem(){
+    return this.state.list.map((item,index)=>{
+      // 子组件传参
+      return (
+        <TodoItem key={index} 
+          infos={{...item,index}}
+          delete={this.handleDelete}/>
+      )
+    })
+  }
   handleInput(e){
     // 修改state中的数据
     console.log('input',e.target.value)
-    // debugger
-    this.setState({
-      target: e.target.value
-    })
+    // 异步set
+    let val = e.target.value
+    this.setState(_=>({
+      target: val
+    }))
   }
   handleSubmit(e){
-    // debugger
-    this.setState({
+    // 异步set
+    this.setState(prevState=>({
       target: '',
-      list: [...this.state.list,{value:this.state.target}]
-    })
+      list: [...prevState.list,{value:prevState.target}]
+    }))
     console.log('submit',this.state.list)
   }
 
