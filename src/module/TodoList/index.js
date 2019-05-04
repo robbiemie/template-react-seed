@@ -16,11 +16,11 @@ class TodoList extends Component {
           value={this.state.target} // 绑定数据
           onChange={this.handleInput.bind(this)} // 绑定方法
         />
-        <button onClick={this.handleSubmit.bind(this)}>提交</button>
+        <button onClick={this.handleSubmit.bind(this)}>submit</button>
         <ul>
           {
             this.state.list.map((item,index)=>{
-              return <li key={index}>{item.value}</li>
+              return <li key={index} onClick={this.handleDelete.bind(this,index)}>{item.value}</li>
             })
           }
         </ul>
@@ -29,19 +29,23 @@ class TodoList extends Component {
   }
   handleInput(e){
     // 修改state中的数据
-    console.log('e',e.target.value)
+    console.log('input',e.target.value)
     this.setState({
       target: e.target.value
     })
   }
   handleSubmit(e){
-    console.log('e',e)
-    const list = this.state.list
-    list.push({
-      value: this.state.target
-    })
     this.setState({
-      list
+      target: '',
+      list: [...this.state.list,{value:this.state.target}]
+    })
+    console.log('submit',this.state.list)
+  }
+  handleDelete(index){
+    console.log('index',index)
+    this.state.list.splice(index,1)
+    this.setState({
+      list: this.state.list
     })
   }
 }
