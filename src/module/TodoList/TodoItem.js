@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import PropTypes from 'prop-types'
 
 class TodoItem extends Component {
   constructor(props){
@@ -21,6 +22,19 @@ class TodoItem extends Component {
     // 子父组件传参
     this.props.delete(index)
   }
+}
+// 类型校验
+TodoItem.propTypes = {
+  infos: PropTypes.object,
+  delete: PropTypes.arrayOf(PropTypes.func,PropTypes.object)
+}
+// 默认属性
+TodoItem.defaultProps = {
+  infos: {
+    index: -1,
+    value: ''
+  },
+  delete: null
 }
  
 export default TodoItem;
