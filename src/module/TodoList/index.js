@@ -25,7 +25,11 @@ class TodoList extends Component {
           {
             this.state.list.map((item,index)=>{
               // 子组件传参
-              return (<TodoItem key={index} infos={{...item,index}}/>)
+              return (
+                <TodoItem key={index} 
+                  infos={{...item,index}}
+                  delete={this.handleDelete.bind(this)}/>
+              )
             })
           }
         </ul>
@@ -47,6 +51,17 @@ class TodoList extends Component {
       list: [...this.state.list,{value:this.state.target}]
     })
     console.log('submit',this.state.list)
+  }
+
+  handleDelete(index){
+    console.log('delete',index)
+    // state 不允许直接被修改 
+    // Immutable 
+    const list = [...this.state.list]
+    list.splice(index,1)
+    this.setState({
+      list
+    })
   }
 }
  

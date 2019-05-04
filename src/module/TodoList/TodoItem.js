@@ -9,14 +9,15 @@ class TodoItem extends Component {
     )
   }
   handleDelete(index){
-    console.log('index',index)
+    // console.log('delete',index)
+    this.props.delete(index)
     // state 不允许直接被修改 
     // Immutable 
-    const list = [...this.state.list]
-    list.splice(index,1)
-    this.setState({
-      list
-    })
+    // const list = [...this.state.list]
+    // list.splice(index,1)
+    // this.setState({
+    //   list
+    // })
   }
 }
  
