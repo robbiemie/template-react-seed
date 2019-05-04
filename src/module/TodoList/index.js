@@ -23,6 +23,7 @@ class TodoList extends Component {
         <input 
           placeholder="please input words"
           className="search"
+          ref={input=>{this.input=input}}
           value={this.state.target} // 绑定数据
           onChange={this.handleInput} // 绑定方法
         />
@@ -45,9 +46,9 @@ class TodoList extends Component {
   }
   handleInput(e){
     // 修改state中的数据
-    console.log('input',e.target.value)
+    console.log('input',this.input.value)
     // 异步set
-    let val = e.target.value
+    let val = this.input.value
     this.setState(_=>({
       target: val
     }))

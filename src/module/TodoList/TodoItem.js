@@ -26,7 +26,7 @@ class TodoItem extends Component {
 // 类型校验
 TodoItem.propTypes = {
   infos: PropTypes.object,
-  delete: PropTypes.arrayOf(PropTypes.func,PropTypes.object)
+  delete: PropTypes.oneOfType([PropTypes.func,PropTypes.object])
 }
 // 默认属性
 TodoItem.defaultProps = {
