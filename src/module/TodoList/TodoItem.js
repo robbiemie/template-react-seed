@@ -9,7 +9,7 @@ class TodoItem extends Component {
   bindMethods(){
     this.handleDelete = this.handleDelete.bind(this)
   }
-  render() { 
+  render() {
     // 接收父组件参数
     const {value} = this.props.infos
     return ( 
