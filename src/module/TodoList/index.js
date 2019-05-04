@@ -43,9 +43,12 @@ class TodoList extends Component {
   }
   handleDelete(index){
     console.log('index',index)
-    this.state.list.splice(index,1)
+    // state 不允许直接被修改 
+    // Immutable 
+    const list = [...this.state.list]
+    list.splice(index,1)
     this.setState({
-      list: this.state.list
+      list
     })
   }
 }
