@@ -1,9 +1,11 @@
 import ActionTypes from './actionTypes'
+// 默认值
 const defaultData = {
   target: '',
   list: []
 }
 // reducer 不可以修改 state 值
+// 纯函数， 给固定的输入，有固定的输出，没有任何副作用
 export default (state = defaultData, actions) => {
   console.log('reducer', state, actions)
   if (actions.type === ActionTypes.CHANGE_INPUT_VALUE) {

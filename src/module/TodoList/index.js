@@ -10,7 +10,6 @@ class TodoList extends Component {
     this.bindMethods()
     this.state = store.getState()
     store.subscribe(this.handleStoreChange)
-    // console.log('data',store.getState())
   }
   bindMethods(){
     this.handleInputChange = this.handleInputChange.bind(this)
