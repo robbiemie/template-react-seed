@@ -1,6 +1,6 @@
 import React ,{ Component, Fragment } from 'react'
 import TodoItem from './TodoItem'
-import { Input, Button } from 'antd'
+import { Input, Button,List } from 'antd'
 import './index.css'
 
 class TodoList extends Component {
@@ -29,9 +29,13 @@ class TodoList extends Component {
           onChange={this.handleInput} // 绑定方法
         />
         <Button type="primary" style={{marginLeft:'4px'}} onClick={this.handleSubmit}>submit</Button>
-        <ul>
-          { this.getItem() }
-        </ul>
+        <List
+          style={{marginTop: '10px',width: '300px'}}
+          bordered
+          dataSource={ this.getItem() }
+          renderItem={ item=> <List.Item>{item}</List.Item>}
+        >
+        </List>
       </Fragment>
      )
   }
