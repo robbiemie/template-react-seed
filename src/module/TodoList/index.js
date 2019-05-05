@@ -1,14 +1,13 @@
 import React ,{Component,Fragment} from 'react'
 import TodoItem from './TodoItem'
+import store from './../../store'
 import './index.css'
 
 class TodoList extends Component {
   constructor(){
     super()
-    this.state = {
-      target: '',
-      list: []
-    }
+    this.state = store.getState()
+    console.log('data',store.getState())
     this.bindMethods()
   }
   bindMethods(){
