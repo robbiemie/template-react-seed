@@ -1,7 +1,7 @@
 import React ,{Component,Fragment} from 'react'
 import TodoItem from './TodoItem'
 import store from './../../store'
-import ActionTypes from './../../store/actionTypes'
+import actionCreators from './../../store/actionCreators'
 import './index.css'
 
 class TodoList extends Component {
@@ -49,36 +49,20 @@ class TodoList extends Component {
     this.setState(store.getState())
   }
   handleInputChange(e){
-    const action = {
-      type: ActionTypes.CHANGE_INPUT_VALUE,
-      value: e.target.value
-    }
+    const action = actionCreators.getInputChangeAction(e.target.value)
     store.dispatch(action)
   }
   handleSubmit(e){
     // 异步set
-    const action = {
-      type: ActionTypes.SUBMIT_INPUT_VALUE
-    }
+    const action = actionCreators.getSubmitInputAction()
     store.dispatch(action)
   }
 
   handleDelete(index){
     console.log('delete',index)
     // state 不允许直接被修改 
-    const action = {
-      type: ActionTypes.DELETE_INDEX_VALUE,
-      value: index
-    }
+    const action = actionCreators.getDeleteItemAction(index)
     store.dispatch(action)
-    // // Immutable 
-    // this.setState(prevState=>{
-    //   const list = [...prevState.list]
-    //   list.splice(index,1)
-    //   return {
-    //     list
-    //   }
-    // })
   }
 }
  
