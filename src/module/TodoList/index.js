@@ -1,5 +1,6 @@
-import React ,{Component,Fragment} from 'react'
+import React ,{ Component, Fragment } from 'react'
 import TodoItem from './TodoItem'
+import { Input, Button } from 'antd'
 import './index.css'
 
 class TodoList extends Component {
@@ -20,13 +21,14 @@ class TodoList extends Component {
     return ( 
       <Fragment>
         {/** 注释写的好恶心 */}
-        <input 
+        <Input 
           placeholder="please input words"
           className="search"
+          style={{width:'300px'}}
           value={this.state.target} // 绑定数据
           onChange={this.handleInput} // 绑定方法
         />
-        <button onClick={this.handleSubmit}>submit</button>
+        <Button type="primary" style={{marginLeft:'4px'}} onClick={this.handleSubmit}>submit</Button>
         <ul>
           { this.getItem() }
         </ul>
