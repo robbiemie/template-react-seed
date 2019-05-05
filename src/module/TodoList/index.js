@@ -1,6 +1,7 @@
 import React ,{Component,Fragment} from 'react'
 import TodoItem from './TodoItem'
 import store from './../../store'
+import ActionTypes from './../../store/actionTypes'
 import './index.css'
 
 class TodoList extends Component {
@@ -49,7 +50,7 @@ class TodoList extends Component {
   }
   handleInputChange(e){
     const action = {
-      type: 'change_input_value',
+      type: ActionTypes.CHANGE_INPUT_VALUE,
       value: e.target.value
     }
     store.dispatch(action)
@@ -57,7 +58,7 @@ class TodoList extends Component {
   handleSubmit(e){
     // 异步set
     const action = {
-      type: 'submit_input_value'
+      type: ActionTypes.SUBMIT_INPUT_VALUE
     }
     store.dispatch(action)
   }
@@ -66,7 +67,7 @@ class TodoList extends Component {
     console.log('delete',index)
     // state 不允许直接被修改 
     const action = {
-      type: 'delete_index_value',
+      type: ActionTypes.DELETE_INDEX_VALUE,
       value: index
     }
     store.dispatch(action)
